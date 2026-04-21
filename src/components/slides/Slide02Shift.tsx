@@ -31,11 +31,11 @@ export function Slide02Shift() {
               style={{
                 background:
                   "linear-gradient(90deg, transparent, #6366f1, #a855f7, #ec4899, transparent)",
+                transformOrigin: "left",
               }}
               initial={{ scaleX: 0 }}
               animate={{ scaleX: 1 }}
               transition={{ duration: 1.6, delay: 0.4, ease: "easeInOut" }}
-              style={{ transformOrigin: "left" }}
             />
 
             {nodes.map((n, i) => (
