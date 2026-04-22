@@ -3,33 +3,25 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Star } from "lucide-react";
 import { SlideShell, Eyebrow } from "../SlideShell";
 import { AnimatedText } from "../AnimatedText";
-import { CodeBlock } from "../CodeBlock";
+import { InlineAutocompleteAnimation } from "../animations/InlineAutocompleteAnimation";
+import { ChatBotAnimation } from "../animations/ChatBotAnimation";
+import { AgentAnimation } from "../animations/AgentAnimation";
 
 const nodes = [
   {
     year: "2021",
     label: "Autocomplete",
+    type: "autocomplete" as const,
     filename: "editor.ts",
-    snippet: `// You type this
-const total = values.redu
-
-// Inline suggestion appears instantly
-const total = values.reduce((acc, n) => acc + n, 0)
-
-console.log(total)`,
+    code: `const total = values.redu`,
+    suggestion: `ce((acc, n) => acc + n, 0)`,
   },
   {
     year: "2023",
     label: "Chat",
-    filename: "assistant.chat",
-    snippet: `# You ask in chat
-"Write a debounce utility in TypeScript"
-
-// AI returns a full answer block
-export function debounce<T extends (...args: unknown[]) => void>(
-  fn: T,
-  wait = 200,
-) {
+    type: "chat" as const,
+    prompt: `Write a debounce utility in TypeScript`,
+    response: `export function debounce<T extends (...args: unknown[]) => void>(fn: T, wait = 200) {
   let t: ReturnType<typeof setTimeout>
   return (...args: Parameters<T>) => {
     clearTimeout(t)
@@ -40,16 +32,8 @@ export function debounce<T extends (...args: unknown[]) => void>(
   {
     year: "2025",
     label: "AGENTS",
+    type: "agent" as const,
     star: true,
-    filename: "agent.run.ts",
-    snippet: `// You provide a goal, not a snippet
-goal("Ship login with tests and docs")
-
-agent.plan()
-agent.writeCode("src/auth/*")
-agent.run("npm test")
-agent.fixFailures()
-agent.openPR("feat: auth module")`,
   },
 ];
 
@@ -167,13 +151,30 @@ export function Slide02Shift() {
                 </div>
               </div>
 
-              <CodeBlock
-                key={activeNode.year}
-                code={activeNode.snippet}
-                filename={activeNode.filename}
-                speed={11}
-                startDelay={120}
-              />
+              {activeNode.type === "autocomplete" && "code" in activeNode && "suggestion" in activeNode && (
+                <InlineAutocompleteAnimation
+                  key={activeNode.year}
+                  code={activeNode.code}
+                  suggestion={activeNode.suggestion}
+                  filename={activeNode.filename}
+                  speed={25}
+                  startDelay={120}
+                />
+              )}
+
+              {activeNode.type === "chat" && "prompt" in activeNode && "response" in activeNode && (
+                <ChatBotAnimation
+                  key={activeNode.year}
+                  prompt={activeNode.prompt}
+                  response={activeNode.response}
+                  speed={25}
+                  startDelay={120}
+                />
+              )}
+
+              {activeNode.type === "agent" && (
+                <AgentAnimation key={activeNode.year} />
+              )}
             </motion.div>
           </AnimatePresence>
         </div>

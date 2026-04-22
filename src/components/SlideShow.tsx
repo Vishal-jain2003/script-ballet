@@ -4,35 +4,37 @@ import { ChevronLeft, ChevronRight, Pause, Play } from "lucide-react";
 import { ProgressBar } from "./ProgressBar";
 import { useSlideNavigation } from "@/hooks/useSlideNavigation";
 import { Slide00Introduction } from "./slides/Slide00Introduction";
-import { Slide01SessionAbout } from "./slides/Slide01SessionAbout";
-import { Slide02SessionQuestion } from "./slides/Slide02SessionQuestion";
 import { Slide02Shift } from "./slides/Slide02Shift";
-import { Slide03Agenda } from "./slides/Slide03Agenda";
+import { Slide02SessionQuestion } from "./slides/Slide02SessionQuestion";
 import { Slide04Core } from "./slides/Slide04Core";
 import { Slide05Concepts } from "./slides/Slide05Concepts";
+import { Slide06ConfigIntro } from "./slides/Slide06ConfigIntro";
 import { Slide06Instructions } from "./slides/Slide06Instructions";
 import { Slide07MCP } from "./slides/Slide07MCP";
 import { Slide08Hooks } from "./slides/Slide08Hooks";
 import { Slide09Skills } from "./slides/Slide09Skills";
 import { Slide10Permissions } from "./slides/Slide10Permissions";
-import { Slide11SDLC } from "./slides/Slide11SDLC";
-import { Slide12Conclusion } from "./slides/Slide12Conclusion";
+import { SlideADLC01Title } from "./slides/SlideADLC01Title";
+import { SlideADLC_Tradeoff } from "./slides/SlideADLC_Tradeoff";
+import { SlideADLC_Architecture } from "./slides/SlideADLC_Architecture";
+import { SlideADLC_Flow } from "./slides/SlideADLC_Flow";
 
 const slides = [
   Slide00Introduction,
-  Slide01SessionAbout,
-  Slide02SessionQuestion,
   Slide02Shift,
-  Slide03Agenda,
+  Slide02SessionQuestion,
   Slide04Core,
   Slide05Concepts,
+  Slide06ConfigIntro,
   Slide06Instructions,
   Slide07MCP,
   Slide08Hooks,
   Slide09Skills,
   Slide10Permissions,
-  Slide11SDLC,
-  Slide12Conclusion,
+  SlideADLC01Title,
+  SlideADLC_Tradeoff,
+  SlideADLC_Architecture,
+  SlideADLC_Flow,
 ];
 
 const AUTOPLAY_MS = 8000;

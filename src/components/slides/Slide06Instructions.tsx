@@ -17,41 +17,63 @@ const anatomy = [
   "GUARDRAILS",
 ];
 
-const codeContent = `# TaskFlow API — CLAUDE.md
+const codeContent = `# TaskFlow API - CLAUDE.md
+
+## Project Summary
+TaskFlow API is the backend for an internal workflow platform.
+Keep changes small, explicit, and easy to review.
 
 ## Stack
-Node.js 20 + Express + TypeScript
-PostgreSQL + Prisma ORM
-Jest + pnpm
+- Node.js 20 + Express + TypeScript
+- PostgreSQL + Prisma ORM
+- Jest + pnpm
 
-## Rules
-✓ ALWAYS use repository pattern
-✗ NEVER put DB queries in routes
+## Code Structure
+- routes/ -> HTTP entry points
+- services/ -> business logic
+- repositories/ -> database access
+- validators/ -> Zod schemas
+
+## Working Rules
+✓ ALWAYS use the repository pattern
+✓ Keep route handlers thin
 ✓ Validate all input with Zod
-✗ Never modify prisma/migrations/`;
+✓ Prefer small composable functions
+✗ NEVER put DB queries in routes
+✗ Never modify prisma/migrations/
+
+## Commands
+- pnpm dev
+- pnpm test
+- pnpm lint
+- pnpm prisma migrate dev
+
+## Definition of Done
+✓ Tests pass
+✓ Types are clean
+✓ No broken imports
+✓ Update docs when behavior changes
+
+## When In Doubt
+- Read existing patterns first
+- Match nearby file conventions
+- Leave a short summary of what changed`;
 
 export function Slide06Instructions() {
   return (
     <SlideShell>
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
-        <div className="space-y-6">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="font-display font-black text-3xl md:text-5xl leading-tight"
-          >
-            The Most <span className="text-gradient">Important</span> Thing You Can Do
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-lg text-foreground/80"
-          >
-            Give the agent a <span className="text-gradient font-semibold">project-aware instruction file.</span>
-          </motion.p>
+      <div className="space-y-7">
+        <motion.h2
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="text-center font-display font-black text-3xl md:text-5xl"
+        >
+          Instruction File
+        </motion.h2>
 
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
+        <div className="space-y-6">
           <div className="space-y-2">
             {tools.map((t, i) => (
               <motion.div
@@ -98,6 +120,7 @@ export function Slide06Instructions() {
         >
           <CodeBlock code={codeContent} filename="CLAUDE.md" speed={10} startDelay={800} />
         </motion.div>
+        </div>
       </div>
     </SlideShell>
   );

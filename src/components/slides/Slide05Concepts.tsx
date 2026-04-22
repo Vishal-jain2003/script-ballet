@@ -1,16 +1,17 @@
 import { useMemo, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import { BookOpen, Brain, FileCode, Network, Shield, Terminal, Wrench, Zap } from "lucide-react";
 import { SlideShell } from "../SlideShell";
 import { CodeBlock } from "../CodeBlock";
 
 const concepts = [
-  { icon: "🔧", name: "TOOLS", desc: "Actions the agent can perform" },
-  { icon: "🔌", name: "MCP", desc: "Universal protocol for external integrations" },
-  { icon: "⚡", name: "HOOKS", desc: "Event-driven scripts around agent actions" },
-  { icon: "📚", name: "SKILLS", desc: "Reusable instruction packs for your patterns" },
-  { icon: "⌨️", name: "COMMANDS", desc: "Slash commands for common operations" },
-  { icon: "📋", name: "INSTRUCTIONS", desc: "Project-level config files" },
-  { icon: "🛡️", name: "PERMISSIONS", desc: "Safety boundaries for autonomous work" },
+  { icon: Wrench, name: "TOOLS", desc: "Actions the agent can perform" },
+  { icon: Network, name: "MCP", desc: "Universal protocol for external integrations" },
+  { icon: Zap, name: "HOOKS", desc: "Event-driven scripts around agent actions" },
+  { icon: BookOpen, name: "SKILLS", desc: "Reusable instruction packs for your patterns" },
+  { icon: Terminal, name: "COMMANDS", desc: "Slash commands for common operations" },
+  { icon: FileCode, name: "INSTRUCTIONS", desc: "Project-level config files" },
+  { icon: Shield, name: "PERMISSIONS", desc: "Safety boundaries for autonomous work" },
 ];
 
 const snippetByConcept: Record<string, { filename: string; snippet: string } | undefined> = {
@@ -87,10 +88,10 @@ export function Slide05Concepts() {
           className="text-center"
         >
           <h2 className="font-display font-black text-4xl md:text-5xl">
-            <span className="text-gradient">7 Concepts.</span> Tap One. See It Live.
+            <span className="text-gradient">Universal Concepts</span> Across All Agentic Tools
           </h2>
           <p className="mt-3 text-muted-foreground max-w-2xl mx-auto">
-            Click a concept card to preview it on the fly. Use <span className="text-foreground font-semibold">TOOLS</span> and <span className="text-foreground font-semibold">MCP</span> to see live code examples.
+            Learn once, apply anywhere. Click a concept card to preview it on the fly. Use <span className="text-foreground font-semibold">TOOLS</span> and <span className="text-foreground font-semibold">MCP</span> to see live code examples.
           </p>
         </motion.div>
 
@@ -102,9 +103,8 @@ export function Slide05Concepts() {
               key={c.name}
               initial={{ opacity: 0, y: 24, scale: 0.96 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
-              transition={{ duration: 0.45, delay: 0.2 + i * 0.06, ease: [0.22, 1, 0.36, 1] }}
+              transition={{ type: "spring", stiffness: 220, damping: 22, delay: 0.2 + i * 0.06 }}
               whileHover={{ y: -8, scale: 1.02 }}
-              transition={{ type: "spring", stiffness: 220, damping: 22 }}
               onClick={() => setSelectedConcept(c.name)}
               className={`relative overflow-hidden rounded-2xl p-5 glass group cursor-pointer transition-all duration-300 ${
                 isActive
@@ -119,11 +119,11 @@ export function Slide05Concepts() {
               />
 
               <motion.div
-                className="text-4xl mb-3"
+                className="mb-3 inline-flex h-11 w-11 items-center justify-center rounded-xl border border-white/15 bg-white/5"
                 animate={{ y: isActive ? [0, -4, 0] : [0, -1, 0] }}
                 transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", delay: i * 0.06 }}
               >
-                {c.icon}
+                <c.icon className="h-5 w-5 text-cyan-200 group-hover:text-cyan-100" strokeWidth={2.2} />
               </motion.div>
 
               <div className="font-display font-bold text-lg text-gradient mb-1">{c.name}</div>
