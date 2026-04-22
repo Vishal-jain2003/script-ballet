@@ -11,7 +11,7 @@ const willCover = [
 
 const wontCover = [
   "Tool X vs Tool Y comparison",
-  "Beginner basics of AI coding",
+  
   "Hype — only practical value",
 ];
 

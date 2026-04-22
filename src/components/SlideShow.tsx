@@ -3,7 +3,9 @@ import { AnimatePresence, motion } from "framer-motion";
 import { ChevronLeft, ChevronRight, Pause, Play } from "lucide-react";
 import { ProgressBar } from "./ProgressBar";
 import { useSlideNavigation } from "@/hooks/useSlideNavigation";
-import { Slide01Hero } from "./slides/Slide01Hero";
+import { Slide00Introduction } from "./slides/Slide00Introduction";
+import { Slide01SessionAbout } from "./slides/Slide01SessionAbout";
+import { Slide02SessionQuestion } from "./slides/Slide02SessionQuestion";
 import { Slide02Shift } from "./slides/Slide02Shift";
 import { Slide03Agenda } from "./slides/Slide03Agenda";
 import { Slide04Core } from "./slides/Slide04Core";
@@ -17,7 +19,9 @@ import { Slide11SDLC } from "./slides/Slide11SDLC";
 import { Slide12Conclusion } from "./slides/Slide12Conclusion";
 
 const slides = [
-  Slide01Hero,
+  Slide00Introduction,
+  Slide01SessionAbout,
+  Slide02SessionQuestion,
   Slide02Shift,
   Slide03Agenda,
   Slide04Core,

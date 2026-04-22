@@ -40,7 +40,7 @@ export function Slide01Hero() {
           transition={{ duration: 0.8, delay: 1.5 }}
           className="max-w-2xl text-lg md:text-xl text-muted-foreground"
         >
-          How agentic AI is rewriting the developer workflow — and how to harness it today.
+          How agentic AI is rewriting the developer workflow - and how to harness it today.
         </motion.p>
 
         <motion.button
