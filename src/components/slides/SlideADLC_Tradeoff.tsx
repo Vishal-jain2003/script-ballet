@@ -2,25 +2,25 @@ import { motion } from "framer-motion";
 import { SlideShell } from "../SlideShell";
 
 const manualSteps = [
-  { step: "Plan & Grooming", time: "2–3 days" },
-  { step: "Architecture Review", time: "1–2 days" },
-  { step: "Development", time: "5–7 days" },
-  { step: "Code Review (back & forth)", time: "2–3 days" },
-  { step: "Testing & Bug Fixes", time: "3–4 days" },
-  { step: "CI/CD Setup & Debug", time: "1–2 days" },
-  { step: "Deploy & Verify", time: "1 day" },
-  { step: "Docs & Jira Close", time: "1 day" },
+  { step: "Plan & Grooming", time: "1–2 days" },
+  { step: "Architecture Review", time: "1 day" },
+  { step: "Development", time: "3–4 days" },
+  { step: "Code Review (back & forth)", time: "1–2 days" },
+  { step: "Testing & Bug Fixes", time: "2–3 days" },
+  { step: "CI/CD Setup & Debug", time: "4–6 hrs" },
+  { step: "Deploy & Verify", time: "2–4 hrs" },
+  { step: "Docs & Jira Close", time: "2 hrs" },
 ];
 
 const agentSteps = [
-  { step: "Classify & Plan", agent: "Orchestrator", time: "~2 min" },
-  { step: "Architecture", agent: "Solution Architect", time: "~5 min" },
-  { step: "Implementation", agent: "Developer", time: "~10 min" },
-  { step: "Tests (parallel)", agent: "Unit Tester", time: "~5 min" },
-  { step: "Quality Gate", agent: "Code Reviewer", time: "~3 min" },
-  { step: "CI/CD Auto-fix", agent: "Pipeline Monitor", time: "~5 min" },
-  { step: "Deploy & Verify", agent: "Deploy Agent", time: "~3 min" },
-  { step: "Docs & Close", agent: "Orchestrator", time: "~2 min" },
+  { step: "Classify & Plan", agent: "Orchestrator", time: "~10 min" },
+  { step: "Architecture", agent: "Solution Architect", time: "~15 min" },
+  { step: "Implementation", agent: "Developer", time: "~30 min" },
+  { step: "Tests (parallel)", agent: "Unit Tester", time: "~20 min" },
+  { step: "Quality Gate", agent: "Code Reviewer", time: "~10 min" },
+  { step: "CI/CD Auto-fix", agent: "Pipeline Monitor", time: "~15 min" },
+  { step: "Deploy & Verify", agent: "Deploy Agent", time: "~10 min" },
+  { step: "Docs & Close", agent: "Orchestrator", time: "~10 min" },
 ];
 
 const tradeoffs = [
@@ -67,7 +67,7 @@ export function SlideADLC_Tradeoff() {
           >
             <div className="flex items-center justify-between mb-3">
               <span className="text-xs uppercase tracking-widest text-red-400 font-semibold">Traditional SDLC</span>
-              <span className="text-red-400 font-black text-xl">2–4 weeks</span>
+              <span className="text-red-400 font-black text-xl">~2 weeks</span>
             </div>
             <div className="space-y-1.5">
               {manualSteps.map((s, i) => (
@@ -105,7 +105,7 @@ export function SlideADLC_Tradeoff() {
           >
             <div className="flex items-center justify-between mb-3">
               <span className="text-xs uppercase tracking-widest text-[#10b981] font-semibold">Agentic SDLC</span>
-              <span className="text-[#10b981] font-black text-xl">~35 min</span>
+              <span className="text-[#10b981] font-black text-xl">~2 hrs</span>
             </div>
             <div className="space-y-1.5">
               {agentSteps.map((s, i) => (

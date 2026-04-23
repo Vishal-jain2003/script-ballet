@@ -34,7 +34,7 @@ export function SlideADLC02Problem() {
                 </div>
               ))}
             </div>
-            <div className="mt-4 text-2xl font-black text-red-400">⏱ 2–4 Weeks</div>
+            <div className="mt-4 text-2xl font-black text-red-400">⏱ ~2 Weeks</div>
           </motion.div>
 
           {/* VS Badge */}
@@ -94,7 +94,7 @@ export function SlideADLC02Problem() {
               transition={{ delay: 2.2 }}
               className="mt-4 text-2xl font-black text-emerald-400"
             >
-              ⚡ Same Day
+              ⚡ ~2 Hours
             </motion.div>
           </motion.div>
         </div>

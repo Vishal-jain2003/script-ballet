@@ -510,38 +510,38 @@ export function SlideADLC_Flow() {
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_30%,hsl(270_60%_15%/0.25),transparent_60%)]" />
       <NetworkParticles />
 
-      <div className="relative z-10 py-3 px-4 md:px-8 max-w-6xl mx-auto flex flex-col h-full">
+      <div className="relative z-10 py-3 px-4 md:px-8 max-w-7xl mx-auto flex flex-col h-full">
         <motion.h2 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
-          className="text-xl md:text-2xl font-bold text-gradient mb-0 text-center">
+          className="text-2xl md:text-3xl font-bold text-gradient mb-0.5 text-center">
           Agentic SDLC — Full Feature Pipeline
         </motion.h2>
         <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.15 }}
-          className="text-[10px] text-muted-foreground mb-1 text-center">
+          className="text-xs text-muted-foreground mb-2 text-center">
           User → Orchestrator → Architect → Developer → Tester → Reviewer → CI/CD → Deploy → Docs
         </motion.p>
 
-        <div className="flex justify-center gap-3 mb-1">
+        <div className="flex justify-center gap-3 mb-2">
           <button onClick={startFlow}
-            className={`text-xs font-semibold px-3 py-1 rounded cursor-pointer transition-colors ${activeStep >= 0 ? "bg-primary/20 text-primary/60" : "bg-primary/30 text-primary hover:bg-primary/40"}`}>
+            className={`text-sm font-semibold px-4 py-1.5 rounded cursor-pointer transition-colors ${activeStep >= 0 ? "bg-primary/20 text-primary/60" : "bg-primary/30 text-primary hover:bg-primary/40"}`}>
             {activeStep >= 0 ? "Running..." : "▶ Start Pipeline"}
           </button>
           {activeStep >= 0 && (
             <>
               <button onClick={() => setAutoPlay((p) => !p)}
-                className="text-xs px-3 py-1 rounded bg-secondary text-foreground hover:bg-secondary/80 transition-colors">
+                className="text-sm px-4 py-1.5 rounded bg-secondary text-foreground hover:bg-secondary/80 transition-colors">
                 {autoPlay ? "Pause" : "Resume"}
               </button>
               <button onClick={resetFlow}
-                className="text-xs px-3 py-1 rounded bg-secondary text-foreground hover:bg-secondary/80 transition-colors">
+                className="text-sm px-4 py-1.5 rounded bg-secondary text-foreground hover:bg-secondary/80 transition-colors">
                 Reset
               </button>
             </>
           )}
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-[220px_1fr] gap-2 flex-1 min-h-0">
+        <div className="grid grid-cols-1 lg:grid-cols-[260px_1fr] gap-3 flex-1 min-h-0">
           {/* Step list */}
-          <div className="space-y-0.5 overflow-y-auto pr-1">
+          <div className="space-y-1 overflow-y-auto pr-1">
             {PIPELINE_STEPS.map((step, i) => {
               const isActive = i === activeStep;
               const isDone = i < activeStep;
@@ -549,22 +549,32 @@ export function SlideADLC_Flow() {
                 <motion.button key={i}
                   initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.2 + i * 0.04 }}
                   onClick={() => { setActiveStep(i); setAutoPlay(false); }}
-                  className={`w-full text-left p-1 rounded-lg transition-all duration-300 flex gap-1.5 items-center ${isActive ? "glass" : isDone ? "bg-secondary/30" : "hover:bg-secondary/20"}`}
-                  style={{ borderColor: isActive ? step.color : "transparent", borderWidth: isActive ? 1 : 0 }}
+                  className={`w-full text-left px-2 py-1.5 rounded-lg transition-all duration-300 flex gap-2 items-center ${isActive ? "glass" : isDone ? "bg-secondary/30" : "hover:bg-secondary/20"}`}
+                  style={{ borderColor: isActive ? step.color : "transparent", borderWidth: isActive ? 1 : 0, boxShadow: isActive ? `0 0 10px ${step.color}30` : undefined }}
                 >
-                  <div className="flex-shrink-0 w-4 h-4 rounded-full flex items-center justify-center text-[8px] font-bold transition-colors"
-                    style={{ backgroundColor: isDone || isActive ? step.bg : "hsl(220 15% 20%)", color: isDone || isActive ? step.color : "hsl(215 20% 45%)", border: `1.5px solid ${isDone || isActive ? step.color : "hsl(215 20% 30%)"}` }}>
+                  <div
+                    className="flex-shrink-0 w-7 h-7 rounded-full flex items-center justify-center text-xs font-black transition-all duration-300 flex-shrink-0"
+                    style={{
+                      backgroundColor: isDone ? step.color : isActive ? step.bg : `${step.color}22`,
+                      color: isDone ? "hsl(220 15% 10%)" : step.color,
+                      border: `2px solid ${isActive ? step.color : `${step.color}70`}`,
+                      boxShadow: isActive ? `0 0 10px ${step.color}60` : isDone ? `0 0 6px ${step.color}40` : "none",
+                    }}
+                  >
                     {isDone ? "✓" : i + 1}
                   </div>
                   <div className="min-w-0 flex-1">
-                    <div className="flex items-center gap-1">
-                      <span className="text-[8px] font-semibold px-1 py-0.5 rounded" style={{ backgroundColor: step.bg, color: step.color }}>{step.agent}</span>
+                    <div className="flex items-center gap-1.5 mb-0.5">
+                      <span
+                        className="text-[11px] font-semibold px-1.5 py-0.5 rounded"
+                        style={{ backgroundColor: step.bg, color: step.color }}
+                      >{step.agent}</span>
                       {step.gate && (
                         <motion.span animate={{ opacity: [0.5, 1, 0.5] }} transition={{ repeat: Infinity, duration: 1.5 }}
-                          className="text-[7px] font-bold text-red-400">🔴</motion.span>
+                          className="text-[10px] font-bold text-red-400">🔴</motion.span>
                       )}
                     </div>
-                    <p className={`text-[9px] font-medium leading-tight mt-0.5 ${isActive || isDone ? "text-foreground" : "text-muted-foreground/60"}`}>{step.title}</p>
+                    <p className={`text-[11px] font-medium leading-tight ${isActive || isDone ? "text-foreground" : "text-muted-foreground/75"}`}>{step.title}</p>
                   </div>
                 </motion.button>
               );
@@ -572,44 +582,50 @@ export function SlideADLC_Flow() {
           </div>
 
           {/* Animation panel */}
-          <div className="glass rounded-xl p-2 flex flex-col min-h-[280px]">
+          <div className="glass rounded-xl p-3 flex flex-col min-h-0">
             {currentStep && (
               <motion.div key={`header-${activeStep}`} initial={{ opacity: 0 }} animate={{ opacity: 1 }}
-                className="flex items-center gap-2 mb-1">
-                <span className="text-[10px] font-semibold px-2 py-0.5 rounded" style={{ backgroundColor: currentStep.bg, color: currentStep.color }}>{currentStep.agent}</span>
-                <span className="text-muted-foreground/40 text-xs">→</span>
-                <span className="text-[10px] text-muted-foreground">{currentStep.target}</span>
+                className="flex items-center gap-2 mb-2 flex-shrink-0">
+                <span className="text-sm font-semibold px-2.5 py-1 rounded" style={{ backgroundColor: currentStep.bg, color: currentStep.color }}>{currentStep.agent}</span>
+                <span className="text-muted-foreground/40 text-sm">→</span>
+                <span className="text-sm text-muted-foreground">{currentStep.target}</span>
                 {currentStep.gate && (
-                  <span className="ml-auto text-[9px] font-bold text-red-400 animate-pulse">🔴 Human Gate</span>
+                  <span className="ml-auto text-xs font-bold text-red-400 animate-pulse">🔴 Human Gate</span>
                 )}
               </motion.div>
             )}
 
-            <div className="flex-1 flex items-center justify-center">
+            <div className="flex-1 relative min-h-0">
               <AnimatePresence mode="wait">
                 {StepAnim ? (
-                  <motion.div key={activeStep} initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.95 }} transition={{ duration: 0.3 }}
-                    className="w-full max-w-[460px]">
-                    <StepAnim />
+                  <motion.div key={activeStep}
+                    initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.95 }} transition={{ duration: 0.3 }}
+                    className="absolute inset-0 flex items-center justify-center">
+                    <div className="w-full h-full">
+                      <StepAnim />
+                    </div>
                   </motion.div>
                 ) : (
-                  <motion.div key="empty" initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center">
-                    <p className="text-3xl mb-2">🚀</p>
-                    <p className="text-sm text-muted-foreground">Click <strong className="text-foreground">▶ Start Pipeline</strong> to walk through the full SDLC flow</p>
-                    <p className="text-xs text-muted-foreground/50 mt-2 font-mono">9 stages · 7 agents · 3 human gates</p>
+                  <motion.div key="empty" initial={{ opacity: 0 }} animate={{ opacity: 1 }}
+                    className="absolute inset-0 flex items-center justify-center">
+                    <div className="text-center">
+                      <p className="text-5xl mb-4">🚀</p>
+                      <p className="text-base text-muted-foreground">Click <strong className="text-foreground">▶ Start Pipeline</strong> to walk through the full SDLC flow</p>
+                      <p className="text-sm text-muted-foreground/50 mt-2 font-mono">9 stages · 7 agents · 3 human gates</p>
+                    </div>
                   </motion.div>
                 )}
               </AnimatePresence>
             </div>
 
             {activeStep >= 0 && (
-              <div className="flex items-center justify-center gap-0.5 mt-1">
+              <div className="flex items-center justify-center gap-1 mt-2 flex-shrink-0">
                 {PIPELINE_STEPS.map((s, i) => (
                   <div key={i} className="flex items-center">
-                    <div className="w-2 h-2 rounded-full transition-all duration-300"
-                      style={{ backgroundColor: i <= activeStep ? s.color : "hsl(220 15% 20%)", border: `1px solid ${i <= activeStep ? s.color : "hsl(215 20% 30%)"}` }} />
+                    <div className="w-3 h-3 rounded-full transition-all duration-300"
+                      style={{ backgroundColor: i <= activeStep ? s.color : "hsl(220 15% 20%)", border: `1.5px solid ${i <= activeStep ? s.color : "hsl(215 20% 30%)"}` }} />
                     {i < PIPELINE_STEPS.length - 1 && (
-                      <div className="w-3 h-0.5 transition-colors duration-300"
+                      <div className="w-4 h-0.5 transition-colors duration-300"
                         style={{ backgroundColor: i < activeStep ? PIPELINE_STEPS[i + 1].color : "hsl(215 20% 25%)" }} />
                     )}
                   </div>
@@ -621,15 +637,15 @@ export function SlideADLC_Flow() {
 
         {/* Swimlane */}
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.8 }}
-          className="mt-1 flex items-center justify-center gap-0 flex-wrap">
+          className="mt-2 flex items-center justify-center gap-0 flex-wrap flex-shrink-0">
           {SWIMLANE.map((s, i) => (
             <div key={i} className="flex items-center">
               <div className="flex flex-col items-center">
-                <span className="text-[8px] font-bold px-1.5 py-0.5 rounded" style={{ backgroundColor: `${s.color}20`, color: s.color }}>{s.label}</span>
-                {s.sub && <span className="text-[6px] text-muted-foreground/50 mt-0.5">({s.sub})</span>}
+                <span className="text-[10px] font-bold px-1.5 py-0.5 rounded" style={{ backgroundColor: `${s.color}20`, color: s.color }}>{s.label}</span>
+                {s.sub && <span className="text-[8px] text-muted-foreground/50 mt-0.5">({s.sub})</span>}
               </div>
               {i < SWIMLANE.length - 1 && (
-                <span className="text-[8px] text-muted-foreground/30 mx-1">→</span>
+                <span className="text-[10px] text-muted-foreground/30 mx-1.5">→</span>
               )}
             </div>
           ))}

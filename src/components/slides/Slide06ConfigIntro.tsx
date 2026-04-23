@@ -19,11 +19,16 @@ const subtopics = [
   },
   {
     label: "Sub-Topic 4",
+    title: "Commands",
+    desc: "Slash Commands for Instant Agent Actions",
+  },
+  {
+    label: "Sub-Topic 5",
     title: "Hooks",
     desc: "Automating Around the Agent",
   },
   {
-    label: "Sub-Topic 5",
+    label: "Sub-Topic 6",
     title: "Skills",
     desc: "Reusable Knowledge Packs",
   },

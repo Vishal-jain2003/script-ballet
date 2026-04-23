@@ -10,14 +10,20 @@ import { Slide04Core } from "./slides/Slide04Core";
 import { Slide05Concepts } from "./slides/Slide05Concepts";
 import { Slide06ConfigIntro } from "./slides/Slide06ConfigIntro";
 import { Slide06Instructions } from "./slides/Slide06Instructions";
+import { Slide06Tools } from "./slides/Slide06Tools";
 import { Slide07MCP } from "./slides/Slide07MCP";
+import { Slide07Commands } from "./slides/Slide07Commands";
 import { Slide08Hooks } from "./slides/Slide08Hooks";
 import { Slide09Skills } from "./slides/Slide09Skills";
+import { Slide10AgenticSystem } from "./slides/Slide10AgenticSystem";
 import { Slide10Permissions } from "./slides/Slide10Permissions";
 import { SlideADLC01Title } from "./slides/SlideADLC01Title";
 import { SlideADLC_Tradeoff } from "./slides/SlideADLC_Tradeoff";
 import { SlideADLC_Architecture } from "./slides/SlideADLC_Architecture";
 import { SlideADLC_Flow } from "./slides/SlideADLC_Flow";
+import { SlideGitHubCopilot } from "./slides/SlideGitHubCopilot";
+import { SlideClaudeCode } from "./slides/SlideClaudeCode";
+import { SlideFinalConclusion } from "./slides/SlideFinalConclusion";
 
 const slides = [
   Slide00Introduction,
@@ -27,14 +33,20 @@ const slides = [
   Slide05Concepts,
   Slide06ConfigIntro,
   Slide06Instructions,
+  Slide06Tools,
   Slide07MCP,
+  Slide07Commands,
   Slide08Hooks,
   Slide09Skills,
+  Slide10AgenticSystem,
   Slide10Permissions,
   SlideADLC01Title,
   SlideADLC_Tradeoff,
   SlideADLC_Architecture,
   SlideADLC_Flow,
+  SlideGitHubCopilot,
+  SlideClaudeCode,
+  SlideFinalConclusion,
 ];
 
 const AUTOPLAY_MS = 8000;
