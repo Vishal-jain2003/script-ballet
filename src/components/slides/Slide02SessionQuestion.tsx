@@ -1,6 +1,8 @@
 import { Bot, Brain, Sparkles } from "lucide-react";
 import { SlideShell, Eyebrow } from "../SlideShell";
 
+// my name is 
+
 const keyPoints = [
   "Move from chat-based help to goal-driven task execution",
   "Embed agents into planning, coding, testing, and documentation",
